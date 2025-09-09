@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "name": "nexus-network-service",
+  "builds": [
+    {
+      "src": "src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "prisma/**",
+          "src/**",
+          "uploads/**",
+          "package.json",
+          "tsconfig.json"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.ts"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "installCommand": "npm ci && npx prisma generate",
+  "buildCommand": "npm run build"
+}
