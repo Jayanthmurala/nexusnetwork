@@ -32,7 +32,7 @@ async function buildServer() {
 
   // Register plugins
   await app.register(cors, {
-    origin: true,
+    origin: "*",
     credentials: true
   });
 
