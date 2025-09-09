@@ -32,8 +32,10 @@ async function buildServer() {
 
   // Register plugins
   await app.register(cors, {
-    origin: "*",
-    credentials: true
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000", "https://nexus-frontend-pi-ten.vercel.app"],
+    credentials: true,
+    allowedHeaders: ["Authorization", "Content-Type"],
+    exposedHeaders: ["Content-Disposition"],
   });
 
   // Add content type parser for multipart/form-data
